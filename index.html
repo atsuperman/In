@@ -1,45 +1,28 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>SUPER RADIO</title>
-
     <style>
       .audio-player {
         width: 300px;
-
         margin: 50px auto;
-
         text-align: center;
-
         background-color: #f0f0f0;
-
         padding: 20px;
-
         border-radius: 10px;
-
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
       #trackName {
         margin-top: 20px;
-
         padding-top: 20px;
-
         padding-bottom: 20px;
-
         font-size: 18px;
-
         color: #666;
-
         white-space: nowrap;
-
         overflow: hidden;
-
         text-overflow: ellipsis;
       }
 
@@ -49,21 +32,13 @@
 
       .play-pause-btn {
         background-color: #3498db;
-
         border: none;
-
         border-radius: 50%;
-
         width: 60px;
-
         height: 60px;
-
-        font-size: 24px;
-
+        font-size: 0; /* Hide the text content */
         color: #fff;
-
         cursor: pointer;
-
         transition: background-color 0.3s ease;
       }
 
@@ -71,17 +46,10 @@
         background-color: #2980b9;
       }
 
-      .play-pause-btn {
-        font-size: 0; /* Hide the text content */
-      }
-
       .controls {
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
         padding: 0 20px; /* Adjust padding as needed */
       }
 
@@ -91,47 +59,27 @@
 
       .watermark {
         font-size: 12px;
-
         color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
-
         position: absolute;
-
-        top: 0;
-
-        right: 0;
-      }
-
-      .watermark {
-        /* Adjust position, size, and any other styles as needed */
-
-        position: absolute;
-
         top: calc(50% - 200px); /* Adjust the vertical position */
-
         right: -20px; /* Adjust the horizontal position */
-
         width: 100px; /* Adjust the width of the image */
-
         height: 100px; /* Adjust the height of the image */
       }
     </style>
   </head>
-
   <body>
     <div class="audio-player">
       <h2 id="trackName">Track Name</h2>
-
       <div class="top-pad">
         <audio id="player" preload="none"></audio>
-
-        <button class="play-pause-btn" id="playPauseBtn">
+        <button class="play-pause-btn" id="playPauseBtn" aria-label="Play/Pause">
           <img
             src="https://cdn.glitch.global/fdbaff0e-6af5-4a23-87cc-fb59b12fec81/play-1001-svgrepo-com.png?v=1714803587430"
             class="png-icon play-icon"
             alt="Play Icon"
             style="width: 55px; height: 55px"
           />
-
           <img
             src="https://cdn.glitch.global/fdbaff0e-6af5-4a23-87cc-fb59b12fec81/pause-1010-svgrepo-com.png?v=1714803596431"
             class="png-icon pause-icon"
@@ -140,9 +88,8 @@
           />
         </button>
       </div>
-
       <div class="controls">
-        <button class="play-pause-btn" id="facebookBtn">
+        <button class="play-pause-btn" id="facebookBtn" aria-label="Facebook">
           <img
             src="https://cdn.glitch.global/1780eae4-2681-418a-b256-59d3398b90a7/facebook-176-svgrepo-com.png?v=1715775605123"
             class="png-icon"
@@ -150,8 +97,7 @@
             style="width: 55px; height: 55px"
           />
         </button>
-
-        <button class="play-pause-btn" id="tvBtn">
+        <button class="play-pause-btn" id="tvBtn" aria-label="TV">
           <img
             src="https://cdn.glitch.global/fdbaff0e-6af5-4a23-87cc-fb59b12fec81/tv%20super%20.png?v=1714753298912"
             class="png-icon"
@@ -159,8 +105,7 @@
             style="width: 55px; height: 55px"
           />
         </button>
-
-        <button class="play-pause-btn" id="reloadBtn">
+        <button class="play-pause-btn" id="reloadBtn" aria-label="Reload">
           <img
             src="https://cdn.glitch.global/1780eae4-2681-418a-b256-59d3398b90a7/redeye-svgrepo-com.png?v=1715775222895"
             class="png-icon"
@@ -168,7 +113,6 @@
             style="width: 55px; height: 55px"
           />
         </button>
-
         <div class="watermark-container">
           <img
             src="https://cdn.glitch.global/fdbaff0e-6af5-4a23-87cc-fb59b12fec81/Radio%20SUPER.png?v=1714815197307"
@@ -178,7 +122,6 @@
         </div>
       </div>
     </div>
-
     <script>
       const player = document.getElementById("player");
       const trackNameElement = document.getElementById("trackName");
@@ -190,110 +133,60 @@
       const reloadThreshold = 4;
 
       const trackData = [
-        {
-          url: "https://stream.zeno.fm/u9hsuopgsttuv",
-
-          name: "Chill",
-        },
-
-        {
-          url: "https://stream.zeno.fm/d8eb7f35jebtv",
-
-          name: "💡",
-        },
-
-        {
-          url: "https://stream.zeno.fm/u9hsuopgsttuv",
-
-          name: "SUPER HITS",
-        },
-
-        {
-          url: "https://stream.zeno.fm/d8eb7f35jebtv",
-
-          name: "🎶",
-        },
-
-        {
-          url: "https://stream.zeno.fm/u9hsuopgsttuv",
-
-          name: "VIBEZ",
-        },
-
-        {
-          url: "https://stream.zeno.fm/u9hsuopgsttuv",
-
-          name: "📻",
-        },
-
-        {
-          url: "https://stream.zeno.fm/u9hsuopgsttuv",
-
-          name: "💿SONGS",
-        },
-
-        {
-          url: "https://stream.zeno.fm/d8eb7f35jebtv",
-
-          name: "🎧",
-        },
+        { url: "https://stream.zeno.fm/u9hsuopgsttuv", name: "Chill" },
+        { url: "https://stream.zeno.fm/d8eb7f35jebtv", name: "💡" },
+        { url: "https://stream.zeno.fm/u9hsuopgsttuv", name: "SUPER HITS" },
+        { url: "https://stream.zeno.fm/d8eb7f35jebtv", name: "🎶" },
+        { url: "https://stream.zeno.fm/u9hsuopgsttuv", name: "VIBEZ" },
+        { url: "https://stream.zeno.fm/u9hsuopgsttuv", name: "📻" },
+        { url: "https://stream.zeno.fm/u9hsuopgsttuv", name: "💿SONGS" },
+        { url: "https://stream.zeno.fm/d8eb7f35jebtv", name: "🎧" },
       ];
 
       function loadTrack(index) {
         player.src = trackData[index].url;
-
         const trackName = trackData[index].name;
-
         trackNameElement.textContent = trackName;
-
         document.title = trackName;
-
         player.play();
       }
 
       function selectAndPlayTrack() {
         const now = new Date();
-        const currentHour = now.getHours(); // Get the current hour
-
+        const currentHour = now.getHours();
         let trackIndex;
 
         if (currentHour >= 0 && currentHour < 5) {
-          trackIndex = 0; // 1st track from 12am to 4:59am
+          trackIndex = 0;
         } else if (currentHour === 5) {
-          trackIndex = 1; // 2nd track at 5am
+          trackIndex = 1;
         } else if (currentHour >= 6 && currentHour < 10) {
-          trackIndex = 2; // 3rd track from 6am to 9:59am
+          trackIndex = 2;
         } else if (currentHour >= 10 && currentHour < 12) {
-          trackIndex = 3; // 4th track from 10am to 11:59am
+          trackIndex = 3;
         } else if (currentHour >= 12 && currentHour < 16) {
-          trackIndex = 4; // 5th track from 12pm to 3:59pm
+          trackIndex = 4;
         } else if (currentHour >= 16 && currentHour < 18) {
-          trackIndex = 5; // 6th track from 4pm to 5:59pm
+          trackIndex = 5;
         } else if (currentHour >= 18 && currentHour < 20) {
-          trackIndex = 6; // 7th track from 6pm to 7:59pm
+          trackIndex = 6;
         } else {
-          trackIndex = 7; // 8th track from 8pm onwards
+          trackIndex = 7;
         }
 
         loadTrack(trackIndex);
       }
-
-      // Trigger the function when the page loads
 
       window.onload = selectAndPlayTrack;
 
       playPauseBtn.addEventListener("click", function () {
         if (player.paused) {
           player.play();
-
           playPauseBtn.querySelector(".play-icon").style.display = "none";
-
           playPauseBtn.querySelector(".pause-icon").style.display = "inline";
         } else {
           player.pause();
-
           playPauseBtn.querySelector(".play-icon").style.display = "inline";
-
           playPauseBtn.querySelector(".pause-icon").style.display = "none";
         }
       });
@@ -316,4 +209,3 @@
     </script>
   </body>
 </html>
-
