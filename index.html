@@ -152,33 +152,51 @@
       }
 
       function selectAndPlayTrack() {
-        const now = new Date();
-        const currentHour = now.getHours();
+        // Get the timestamp when the page was loaded
+        const pageLoadTime = new Date();
+
+        // Extract the hour from the page load time
+        const loadHour = pageLoadTime.getHours();
         let trackIndex;
 
-        if (currentHour >= 0 && currentHour < 5) {
+        if (loadHour >= 0 && loadHour < 5) {
           trackIndex = 0;
-        } else if (currentHour === 5) {
+        } else if (loadHour === 5) {
           trackIndex = 1;
-        } else if (currentHour >= 6 && currentHour < 10) {
+        } else if (loadHour >= 6 && loadHour < 10) {
           trackIndex = 2;
-        } else if (currentHour >= 10 && currentHour < 12) {
+        } else if (loadHour >= 10 && loadHour < 12) {
           trackIndex = 3;
-        } else if (currentHour >= 12 && currentHour < 16) {
+        } else if (loadHour >= 12 && loadHour < 16) {
           trackIndex = 4;
-        } else if (currentHour >= 16 && currentHour < 18) {
+        } else if (loadHour >= 16 && loadHour < 18) {
           trackIndex = 5;
-        } else if (currentHour >= 18 && currentHour < 20) {
+        } else if (loadHour >= 18 && loadHour < 20) {
           trackIndex = 6;
         } else {
           trackIndex = 7;
         }
 
         loadTrack(trackIndex);
+
+        // Calculate the time until the next track
+        let nextTrackTime;
+        if (trackIndex === 7) {
+          // If it's the last track, play the first track at 5 AM the next day
+          nextTrackTime = new Date(pageLoadTime.getFullYear(), pageLoadTime.getMonth(), pageLoadTime.getDate() + 1, 5, 0, 0, 0);
+        } else {
+          // Otherwise, play the next track at the start of the next hour
+          nextTrackTime = new Date(pageLoadTime.getFullYear(), pageLoadTime.getMonth(), pageLoadTime.getDate(), loadHour + 1, 0, 0, 0);
+        }
+
+        // Calculate the delay until the next track
+        const delay = nextTrackTime - pageLoadTime;
+
+        // Set a timeout to play the next track
+        setTimeout(selectAndPlayTrack, delay);
       }
 
       window.onload = selectAndPlayTrack;
-
       playPauseBtn.addEventListener("click", function () {
         if (player.paused) {
           player.play();
