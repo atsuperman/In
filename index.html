@@ -214,8 +214,20 @@
       });
 
       tvBtn.addEventListener("click", function () {
-        window.open("https://atsuperman.github.io/Index/Index.html", "_blank");
-      });
+  // Create a new element to display the message
+  const messageElement = document.createElement("div");
+  messageElement.textContent = "Very soon";
+  messageElement.style.color = "#fff"; // Set text color to white
+  messageElement.style.marginTop = "10px"; // Add some space above the message
+  
+  // Insert the message element before the TV button
+  tvBtn.parentNode.insertBefore(messageElement, tvBtn);
+  
+  // Optionally, remove the message after a certain period of time
+  setTimeout(function() {
+    messageElement.remove();
+  }, 3000); // Remove the message after 3 seconds
+});
 
       reloadBtn.addEventListener("click", function () {
         reloadClickCount++;
